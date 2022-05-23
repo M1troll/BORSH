@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Upgrades : MonoBehaviour
 {
     private const string pathToValuesCanvas = "Canvas/ValuesCanvas";
+    private const string pathToDeadFliesButton = "Canvas/UpgradesCanvas/DeadFliesButton";
+    private const string winScene = "WinScene";
 
     private ValuesCanvas valuesCanvas;
 
@@ -58,11 +62,19 @@ public class Upgrades : MonoBehaviour
             valuesCanvas.SubstractMold(cost);
             valuesCanvas.addMoldClickCount += moldClickCount;
             valuesCanvas.SubstractStealth(stealth);
+            var button = GameObject.Find(pathToDeadFliesButton).GetComponent<Button>();
+            var audioSource = button.GetComponent<AudioSource>();
+            audioSource.Play();
         }
     }
 
     public void Evolution()
     {
+        const int cost = 500;
 
+        if (valuesCanvas.moldCount >= cost)
+        {
+            SceneManager.LoadScene(winScene);
+        }
     }
 }
