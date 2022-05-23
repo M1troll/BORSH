@@ -1,32 +1,69 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class BorshClick : MonoBehaviour
+namespace Assets.Scripts
 {
-    private MoldText moldText;
-
-    private int addMoldClickCount = 1;
-
-    // Start is called before the first frame update
-    void Start()
+    public class BorshClick : MonoBehaviour
     {
-        var text = GameObject.Find("Canvas/Text").GetComponent<Text>();
-        moldText = text.GetComponent<MoldText>();
-    }
+        private const string pathToValuesCanvas = "Canvas/ValuesCanvas";
+        private const int stage1 = 0;
+        private const int stage2 = 50;
+        private const int stage3 = 100;
+        private const int stage4 = 200;
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Track a single touch as a direction control.
-        if (Input.touchCount > 0)
+        private ValuesCanvas valuesCanvas;
+
+        void Start()
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase is TouchPhase.Began)
+            valuesCanvas = GameObject.Find(pathToValuesCanvas).GetComponent<Canvas>().GetComponent<ValuesCanvas>();
+        }
+
+        Vector3 touchPosWorld;
+        
+        TouchPhase touchPhase = TouchPhase.Began;
+        void Update()
+        {
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == touchPhase)
             {
-                moldText.AddMold(addMoldClickCount);
+                touchPosWorld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+
+                Vector2 touchPosWorld2D = new Vector2(touchPosWorld.x, touchPosWorld.y);
+                
+                RaycastHit2D hitInformation = Physics2D.Raycast(touchPosWorld2D, Camera.main.transform.forward);
+
+                if (hitInformation.collider != null)
+                {
+                    GameObject touchedObject = hitInformation.transform.gameObject;
+
+                    if (touchedObject.name.Equals("Square"))
+                    {
+                        valuesCanvas.AddMold(valuesCanvas.addMoldClickCount);
+                    }
+                }
+            }
+            CheckStage();
+        }
+        private void CheckStage()
+        {
+            if (valuesCanvas.moldCount >= stage1 && valuesCanvas.moldCount < stage2)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = Color.magenta;
+            }
+            else if (valuesCanvas.moldCount >= stage2 && valuesCanvas.moldCount < stage3)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+            }
+            else if (valuesCanvas.moldCount >= stage3 && valuesCanvas.moldCount < stage4)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = Color.cyan;
+            }
+            else if (valuesCanvas.moldCount >= stage4)
+            {
+                gameObject.GetComponent<SpriteRenderer>().color = Color.black;
             }
         }
     }
 }
+
