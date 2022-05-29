@@ -25,7 +25,7 @@ public class Upgrades : MonoBehaviour
     
     public void Maggots()
     {
-        const int cost = 100;
+        const int cost = 50;
         const int passiveMold = 2;
         const int stealth = 10;
 
@@ -39,9 +39,9 @@ public class Upgrades : MonoBehaviour
 
     public void IcebergLettuce()
     {
-        const int cost = 50;
+        const int cost = 75;
         const int passiveMold = 1;
-        const int stealth = 15;
+        const int stealth = 40;
 
         if (valuesCanvas.addMoldPassiveCount >= passiveMold && valuesCanvas.moldCount >= cost)
         {
@@ -53,7 +53,7 @@ public class Upgrades : MonoBehaviour
 
     public void DeadFlies()
     {
-        const int cost = 25;
+        const int cost = 100;
         const int moldClickCount = 5;
         const int stealth = 30;
 
@@ -70,7 +70,7 @@ public class Upgrades : MonoBehaviour
 
     public void Evolution()
     {
-        const int cost = 500;
+        const int cost = 1500;
 
         if (valuesCanvas.moldCount >= cost)
         {
