@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,6 +9,7 @@ namespace Assets.Scripts
     public class BorshClick : MonoBehaviour
     {
         private const string pathToValuesCanvas = "Canvas/ValuesCanvas";
+        private const string borshName = "BORSH";
         private const int stage1 = 0;
         private const int stage2 = 50;
         private const int stage3 = 100;
@@ -27,6 +29,7 @@ namespace Assets.Scripts
         {
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == touchPhase)
             {
+                
                 touchPosWorld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
                 Vector2 touchPosWorld2D = new Vector2(touchPosWorld.x, touchPosWorld.y);
@@ -37,7 +40,7 @@ namespace Assets.Scripts
                 {
                     GameObject touchedObject = hitInformation.transform.gameObject;
 
-                    if (touchedObject.name.Equals("Square"))
+                    if (touchedObject.name.Equals(borshName))
                     {
                         valuesCanvas.AddMold(valuesCanvas.addMoldClickCount);
                     }

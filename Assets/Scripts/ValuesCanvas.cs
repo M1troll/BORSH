@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -12,6 +13,7 @@ namespace Assets.Scripts
         private const string keySavedStealth = "SavedStealth";
         private const string pathToMoldText = "Canvas/ValuesCanvas/MoldText";
         private const string pathToStealthText = "Canvas/ValuesCanvas/StealthText";
+        private const string mainScene = "MainScene";
 
         private Text moldText;
         private Text stealthText;
@@ -112,6 +114,7 @@ namespace Assets.Scripts
             addMoldClickCount = 1;
             stealthCount = 100;
             Start();
+            SceneManager.LoadScene(mainScene);
             Debug.Log("Data reset complete");
         }
 

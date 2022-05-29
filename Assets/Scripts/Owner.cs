@@ -71,7 +71,8 @@ public class Owner : MonoBehaviour
 
     void CheckLose()
     {
-        double sumStealth = valuesCanvas.moldCount / valuesCanvas.stealthCount;
+        
+        double sumStealth = valuesCanvas.stealthCount == 0 ? 101 : valuesCanvas.moldCount / valuesCanvas.stealthCount;
 
         if (sumStealth > 100)
         {
