@@ -11,9 +11,9 @@ namespace Assets.Scripts
         private const string pathToValuesCanvas = "Canvas/ValuesCanvas";
         private const string borshName = "BORSH";
         private const int stage1 = 0;
-        private const int stage2 = 50;
-        private const int stage3 = 100;
-        private const int stage4 = 200;
+        private const int stage2 = 500;
+        private const int stage3 = 900;
+        private const int stage4 = 1200;
 
         private ValuesCanvas valuesCanvas;
 
