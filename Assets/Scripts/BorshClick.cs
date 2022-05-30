@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
@@ -42,7 +38,7 @@ namespace Assets.Scripts
 
                     if (touchedObject.name.Equals(borshName))
                     {
-                        valuesCanvas.AddMold(valuesCanvas.addMoldClickCount);
+                        valuesCanvas.AddMold(GlobalData.addMoldClickCount);
                     }
                 }
             }
@@ -50,19 +46,19 @@ namespace Assets.Scripts
         }
         private void CheckStage()
         {
-            if (valuesCanvas.moldCount >= stage1 && valuesCanvas.moldCount < stage2)
+            if (GlobalData.moldCount >= stage1 && GlobalData.moldCount < stage2)
             {
                 gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             }
-            else if (valuesCanvas.moldCount >= stage2 && valuesCanvas.moldCount < stage3)
+            else if (GlobalData.moldCount >= stage2 && GlobalData.moldCount < stage3)
             {
                 gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
             }
-            else if (valuesCanvas.moldCount >= stage3 && valuesCanvas.moldCount < stage4)
+            else if (GlobalData.moldCount >= stage3 && GlobalData.moldCount < stage4)
             {
                 gameObject.GetComponent<SpriteRenderer>().color = Color.cyan;
             }
-            else if (valuesCanvas.moldCount >= stage4)
+            else if (GlobalData.moldCount >= stage4)
             {
                 gameObject.GetComponent<SpriteRenderer>().color = Color.green;
             }
