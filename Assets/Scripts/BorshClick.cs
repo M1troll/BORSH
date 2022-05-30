@@ -52,7 +52,7 @@ namespace Assets.Scripts
         {
             if (valuesCanvas.moldCount >= stage1 && valuesCanvas.moldCount < stage2)
             {
-                gameObject.GetComponent<SpriteRenderer>().color = Color.magenta;
+                gameObject.GetComponent<SpriteRenderer>().color = Color.white;
             }
             else if (valuesCanvas.moldCount >= stage2 && valuesCanvas.moldCount < stage3)
             {
@@ -64,7 +64,7 @@ namespace Assets.Scripts
             }
             else if (valuesCanvas.moldCount >= stage4)
             {
-                gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+                gameObject.GetComponent<SpriteRenderer>().color = Color.green;
             }
         }
     }

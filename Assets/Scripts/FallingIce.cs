@@ -8,10 +8,16 @@ public class FallingIce : MonoBehaviour
     Vector3 _startPoint = new Vector3(0.5748f, 5.8228f);
 
     [SerializeField]
-    Vector3 _endPoint = new Vector3(0.67f, -1.07f);
+    Vector3 _endPoint = new Vector3(0.73f, -2.43f);
 
     [SerializeField]
     float _speed = 1.4f;
+
+    void Start()
+    {
+        _startPoint = new Vector3(0.5748f, 5.8228f);
+        _endPoint = new Vector3(0.73f, -2.43f);
+    }
 
     private IEnumerator MovingCoroutine(Vector3 startPosition, Vector3 goalPosition)
     {

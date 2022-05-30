@@ -13,8 +13,7 @@ public class FlyMove : MonoBehaviour
 
     [SerializeField]
     float _speed = 0.3f;
-
-
+    
     private IEnumerator MovingCoroutine(Vector3 startPosition, Vector3 goalPosition)
     {
         float wTimer = 0;

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Upgrades : MonoBehaviour
 {
     private const string pathToValuesCanvas = "Canvas/ValuesCanvas";
-    private const string pathToDeadFliesButton = "Canvas/UpgradesCanvas/DeadFliesButton";
+    private const string pathToDeadFliesButton = "Canvas/Panel/UpgradesCanvas/DeadFliesButton";
     private const string winScene = "WinScene";
 
     private ValuesCanvas valuesCanvas;
