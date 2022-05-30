@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts
@@ -13,13 +14,20 @@ namespace Assets.Scripts
 
         private int timer;
 
-        void Awake()
-        {
-            SaveData.LoadGame();
-        }
-
         void Start()
         {
+            SaveData.LoadGame();
+            if (!GlobalData.ActiveScene.Equals("MainScene") && GlobalData.SceneTimer < 1)
+            {
+                GlobalData.SceneTimer++;
+                SceneManager.LoadScene(GlobalData.ActiveScene);
+            }
+            else if (GlobalData.SceneTimer < 1)
+            {
+                GlobalData.SceneTimer++;
+                SceneManager.LoadScene(GlobalData.ActiveScene);
+            }
+
             moldText = GameObject.Find(pathToMoldText).GetComponent<Text>();
             moldText.text = "Плесень " + GlobalData.moldCount;
             stealthText = GameObject.Find(pathToStealthText).GetComponent<Text>();
@@ -37,10 +45,11 @@ namespace Assets.Scripts
             timer++;
         }
 
-        void OnDestroy()
-        {
-            SaveData.SaveGame();
-        }
+        //void OnApplicationQuit()
+        //{
+        //    SaveData.SaveGame();
+        //    GlobalData.ActiveScene = SceneManager.GetActiveScene().name;
+        //}
 
         public void AddMold(int count)
         {

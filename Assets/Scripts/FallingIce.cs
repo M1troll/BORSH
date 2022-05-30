@@ -22,10 +22,16 @@ public class FallingIce : MonoBehaviour
     {
         float wTimer = 0;
 
-        while (transform.position != goalPosition)
+        const int cost = 75;
+        const int passiveMold = 1;
+
+        if (GlobalData.addMoldPassiveCount + passiveMold >= passiveMold && GlobalData.moldCount + cost >= cost)
         {
-            yield return transform.position = Vector3.Lerp(startPosition, goalPosition, wTimer);
-            wTimer += Time.deltaTime * _speed;
+            while (transform.position != goalPosition)
+            {
+                yield return transform.position = Vector3.Lerp(startPosition, goalPosition, wTimer);
+                wTimer += Time.deltaTime * _speed;
+            }
         }
     }
 

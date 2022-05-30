@@ -5,4 +5,6 @@ public static class GlobalData
     public static int addMoldPassiveCount = 1;
     public static int addMoldPassiveInterval = 50;
     public static int addMoldClickCount = 1;
+    public static string ActiveScene = "MainScene";
+    public static int SceneTimer;
 }

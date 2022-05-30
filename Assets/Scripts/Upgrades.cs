@@ -17,6 +17,9 @@ public class Upgrades : MonoBehaviour
 
     public VideoPlayer videoPlayer;
 
+    public FlyMove FlyMove;
+    public FallingIce FallingIce;
+
     void Start()
     {
         valuesCanvas = GameObject.Find(pathToValuesCanvas).GetComponent<Canvas>().GetComponent<ValuesCanvas>();
@@ -58,6 +61,7 @@ public class Upgrades : MonoBehaviour
             valuesCanvas.SubstractMold(cost);
             valuesCanvas.AddStealth(stealth);
             GlobalData.addMoldPassiveCount -= passiveMold;
+            FallingIce.DropDownIceberg();
         }
     }
 
@@ -75,6 +79,7 @@ public class Upgrades : MonoBehaviour
             var button = GameObject.Find(pathToDeadFliesButton).GetComponent<Button>();
             var audioSource = button.GetComponent<AudioSource>();
             audioSource.Play();
+            FlyMove.StartFlyMove();
         }
     }
 
